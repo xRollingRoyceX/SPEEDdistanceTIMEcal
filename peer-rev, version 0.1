@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class SpeedCalculator {
+    private static int askInt(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        return scanner.nextInt();
+    }
+
+    private static double askDouble(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        return scanner.nextDouble();
+    }
+
+    public static void main(String args[]) {
+        System.out.println("What are you trying to calculate?");
+
+        Scanner input = new Scanner(System.in);
+        int menuChoice = askInt(input, 
+            "Press:\n" +
+            "3 for speed (m/s)\n" +
+            "2 for distance (m)\n" +
+            "1 for time (s):\n");
+        System.out.println();
+
+        double dist, speed, time;
+        switch (menuChoice) {
+        case 1: // Solving for time
+            speed = askDouble(input, "Please enter the speed in m/s: ");
+            dist = askDouble(input, "Please enter the distance in m: ");
+            time = dist / speed;
+            System.out.printf("Time equals %s seconds.\n", time);
+            break;
+        case 2: // Solving for distance
+            speed = askDouble(input, "Please enter the speed in m/s: ");
+            time = askDouble(input, "Please enter the time in s: ");
+            dist = speed * time;
+            System.out.printf("Distance equals %s meters.\n", dist);
+            break;
+        case 3: // Solving for speed
+            time = askDouble(input, "Please enter the time in s: ");
+            dist = askDouble(input, "Please enter the distance in m: ");
+            speed = dist / time;
+            System.out.printf("Speed equals %s m/s.\n", speed);
+            break;
+        default:
+            System.out.println("Please enter something I, a computer, can understand.");
+        }
+    }
+}
