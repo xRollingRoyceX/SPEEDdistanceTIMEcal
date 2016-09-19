@@ -1,0 +1,61 @@
+class PhysicsCalculator {
+    public PhysicsCalculator() { }
+
+    public void start() {
+        int userSelection = getCalculationSelection();
+        double result = performCalculation(userSelection);
+    }
+
+    private int getCalculationSelection() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("What are you trying to calculate?");
+        System.out.println(
+            "Press:\n" +
+            "3 for speed (m/s)\n" +
+            "2 for distance (m)\n" +
+            "1 for time (s):\n");
+        int selection = input.nextInt();
+        return selection;
+    }
+
+    private double performCalculation(int calculationType) {
+        double result;
+        switch(calculationType) {
+            case 1:
+                result = solveForTime();
+                break;
+            case 2:
+                result = solveForDistance();
+                break;
+            case 3:
+                result = solveForSpeed();
+                break;
+            default:
+                // TODO better handling of default case
+                // for now returning 0 to avoid NullPointerException
+                result = 0;
+                System.out.println("Please enter something I, a computer, can understand.");
+        }
+        return result;
+    }
+
+    private double solveForTime() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please enter the speed in m/s: ");
+        double speed = input.nextDouble();
+        System.out.print("Please enter the distance in m: ");
+        double dist = input.nextDouble();
+        double time = dist / speed;
+        System.out.printf("Time equals %s seconds.\n", time);
+        return time;
+    }
+
+    private double solveForDistance() {
+        // TODO implement this
+        return 0;
+    }
+    private double solveForSpeed() {
+        // TODO implement this
+        return 0;
+    }
+}
